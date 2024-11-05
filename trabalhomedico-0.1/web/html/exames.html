@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Exames</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 1rem;
+            color: #888;
+        }
+        .btnv{
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 48%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Catálogo de Exames</h2>
+
+        <!-- Formulário para adicionar novo exame -->
+        <div class="form-section">
+            <h3>Adicionar Novo Exame</h3>
+            <label for="nomeExame">Nome do Exame:</label>
+            <input type="text" id="nomeExame" placeholder="Digite o nome do exame">
+
+            <label for="codigoExame">Código:</label>
+            <input type="text" id="codigoExame" placeholder="Digite o código">
+
+            <label for="tipoExame">Tipo de Exame:</label>
+            <input type="text" id="tipoExame" placeholder="Digite o tipo de exame">
+
+            <label for="precoExame">Preço (R$):</label>
+            <input type="number" id="precoExame" placeholder="Digite o preço">
+
+            <label for="disponibilidadeExame">Disponibilidade:</label>
+            <input type="text" id="disponibilidadeExame" placeholder="Disponível / Indisponível">
+
+            <button class="button" onclick="adicionarExame()">Adicionar Exame</button>
+        </div>
+
+        <!-- Tabela de Exames -->
+        <table id="tabelaExames">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Código</th>
+                    <th>Tipo</th>
+                    <th>Preço (R$)</th>
+                    <th>Disponibilidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="no-data">
+                    <td colspan="5">Nenhum exame cadastrado</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/trabalhomedico-0.1/web/index.html"><button class="btnv">Voltar</button></a>
+    <script>
+        // Array para armazenar os exames
+        const exames = [];
+
+        // Função para adicionar um exame ao catálogo
+        function adicionarExame() {
+            const nome = document.getElementById("nomeExame").value;
+            const codigo = document.getElementById("codigoExame").value;
+            const tipo = document.getElementById("tipoExame").value;
+            const preco = document.getElementById("precoExame").value;
+            const disponibilidade = document.getElementById("disponibilidadeExame").value;
+
+            if (nome && codigo && tipo && preco && disponibilidade) {
+                const exame = { nome, codigo, tipo, preco, disponibilidade };
+                exames.push(exame);
+                atualizarTabela();
+                limparFormulario();
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
+
+        // Função para atualizar a tabela com os exames cadastrados
+        function atualizarTabela() {
+            const tabela = document.getElementById("tabelaExames").getElementsByTagName("tbody")[0];
+            tabela.innerHTML = ""; // Limpa a tabela
+
+            exames.forEach(exame => {
+                const linha = tabela.insertRow();
+                linha.innerHTML = `
+                    <td>${exame.nome}</td>
+                    <td>${exame.codigo}</td>
+                    <td>${exame.tipo}</td>
+                    <td>${exame.preco}</td>
+                    <td>${exame.disponibilidade}</td>
+                `;
+            });
+        }
+
+        // Função para limpar o formulário após adicionar um exame
+        function limparFormulario() {
+            document.getElementById("nomeExame").value = "";
+            document.getElementById("codigoExame").value = "";
+            document.getElementById("tipoExame").value = "";
+            document.getElementById("precoExame").value = "";
+            document.getElementById("disponibilidadeExame").value = "";
+        }
+    </script>
+</body>
+</html>

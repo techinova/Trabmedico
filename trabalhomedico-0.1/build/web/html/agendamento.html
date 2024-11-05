@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta</title>
+</head>
+    
+    
+           <body>
+                      <div class="container">
+                          <h1>Agendar Consulta</h1>
+                          <form>
+                                <!-- Complet name -->
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" required>
+                              
+                                
+                                <!-- CPF-->
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" name="cpf" required>
+                              
+                                <!--Phone1 -->
+                                <label for="telefone1">Telefone 1</label>
+                                <input type="text" id="telefone1" name="telefone1" required>
+                              
+                                <!-- Phone 2 -->
+                                <label for="telefone2">Telefone 2</label>
+                                <input type="text" id="telefone2" name="telefone2" required>
+
+                                <!-- Card of agreement -->
+                                <label for="cartaoConvenio">Número do Cartão de Convênio</label>
+                                <input type="text" id="cartaoConvenio" name="cartaoConvenio" required>
+                              
+                                
+                                <!-- Type of Consultation-->
+                                <label for="tipoConsulta">Tipo de Consulta</label>
+                                <input type="text" id="tipoConvenio" name="tipoConvenio" required>
+                                <select>
+                                            <option value="" disabled selected>Selecione o Tipo de Consulta</option>                                                                        <option></option>
+                                            <option value="Cardiologia">Cardiologia</option>
+                                            <option value="Dermatologia">Dermatologia</option>
+                                            <option value="Ortopedia">Ortopedia</option>
+                                            
+                                            <!-- New options add here -->
+                                                
+                                </select>
+
+                                                
+                               <!-- Campo para consulta personalizada -->
+                                            <label for="consultaPersonalizada">Outro Tipo de Consulta (se aplicável)</label>
+                                            <input type="text" id="consultaPersonalizada" name="consultaPersonalizada" placeholder="Digite outro tipo de consulta">
+
+                                            <!-- Data da Consulta -->
+                                            <label for="dataConsulta">Data</label>
+                                            <input type="date" id="dataConsulta" name="dataConsulta" required>
+
+                                            <!-- Hora da Consulta -->
+                                            <label for="horaConsulta">Hora</label>
+                                            <input type="time" id="horaConsulta" name="horaConsulta" required>
+
+                                            <!-- Botão de Agendar -->
+                                            <button type="submit" class="button">Agendar</button>
+                                </form>
+                          
+                                
+                      </div>
+               
+               <p><a href="../index.html">Voltar a página inicial</a></p>
+           </body>
+</html>
